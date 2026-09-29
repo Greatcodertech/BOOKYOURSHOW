@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Started</title>
+    <title>Login Popup</title>
 
     <style>
         * {
@@ -14,126 +14,550 @@
         }
 
         body {
-            height: 100vh;
-            background: #f5f5f5;
+            min-height: 100vh;
+            background: #f1f3f6;
         }
 
-        /* Dark background overlay */
+        /* Fake Background */
+        .background {
+            min-height: 100vh;
+            padding: 30px 10%;
+            background: linear-gradient(
+                120deg,
+                #ffffff,
+                #f5f5f5
+            );
+        }
+
+        .header {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 0 25px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2874f0;
+        }
+
+        .search {
+            width: 50%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            color: #777;
+        }
+
+        .categories {
+            display: flex;
+            gap: 35px;
+            margin-top: 30px;
+            background: white;
+            padding: 20px;
+        }
+
+        .category {
+            text-align: center;
+            color: #333;
+        }
+
+        .category-icon {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .banner {
+            margin-top: 25px;
+            height: 250px;
+            background: linear-gradient(120deg, #6325a7, #d52f9f);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            padding: 40px;
+            color: white;
+        }
+
+        .banner h1 {
+            font-size: 35px;
+        }
+
+
+        /* Dark Overlay */
         .overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.65);
-
+            background: rgba(0, 0, 0, 0.55);
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
         }
 
-        /* Login Popup */
+
+        /* Login Modal */
         .login-box {
-            width: 450px;
-            background: #ffffff;
-            border-radius: 8px;
-            padding: 22px 50px 25px;
+            width: 710px;
+            height: 555px;
+            background: white;
+            display: flex;
             position: relative;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.3);
         }
 
-        /* Heading */
-        .login-box h2 {
-            text-align: center;
-            font-size: 18px;
-            color: #222;
-            margin-bottom: 35px;
+
+        /* Left Side */
+        .left-panel {
+            width: 40%;
+            background: #2874f0;
+            color: white;
+            padding: 45px 35px;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Close button */
+        .left-panel h1 {
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: 22px;
+        }
+
+        .left-panel p {
+            font-size: 20px;
+            line-height: 1.45;
+            color: #e8f0ff;
+        }
+
+
+        /* Simple Illustration */
+        .illustration {
+            position: absolute;
+            bottom: 55px;
+            left: 35px;
+            right: 35px;
+            height: 130px;
+        }
+
+        .laptop {
+            position: absolute;
+            width: 110px;
+            height: 70px;
+            background: #eee;
+            border: 6px solid #222;
+            border-radius: 4px;
+            bottom: 30px;
+            left: 55px;
+        }
+
+        .laptop::before {
+            content: "";
+            position: absolute;
+            width: 55px;
+            height: 55px;
+            background: #bbb;
+            border-radius: 50%;
+            left: 22px;
+            top: 7px;
+        }
+
+        .laptop-base {
+            position: absolute;
+            width: 155px;
+            height: 12px;
+            background: #222;
+            border-radius: 5px;
+            bottom: 18px;
+            left: 32px;
+        }
+
+        .phone {
+            position: absolute;
+            width: 35px;
+            height: 62px;
+            background: #333;
+            bottom: 38px;
+            left: 8px;
+            border-radius: 5px;
+        }
+
+        .phone::after {
+            content: "♥";
+            position: absolute;
+            color: white;
+            font-size: 15px;
+            left: 9px;
+            top: 25px;
+        }
+
+        .shopping-bag {
+            position: absolute;
+            width: 45px;
+            height: 55px;
+            background: #ffd900;
+            right: 15px;
+            bottom: 35px;
+        }
+
+        .cloud {
+            position: absolute;
+            width: 65px;
+            height: 25px;
+            background: #1768c4;
+            border-radius: 20px;
+            top: 10px;
+            left: 80px;
+        }
+
+        .sun {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            background: #ffd600;
+            border-radius: 50%;
+            top: 0;
+            left: 70px;
+        }
+
+
+        /* Right Side */
+        .right-panel {
+            width: 60%;
+            padding: 50px 60px;
+            position: relative;
+        }
+
+        .right-panel h2 {
+            font-size: 19px;
+            font-weight: 400;
+            color: #212121;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #777;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+
+        /* Close Button */
         .close {
             position: absolute;
-            right: 18px;
-            top: 16px;
-
-            font-size: 30px;
-            font-weight: 300;
-            color: #555;
-
+            top: 5px;
+            right: -42px;
+            color: white;
+            font-size: 35px;
+            font-weight: 200;
             cursor: pointer;
+            line-height: 1;
         }
 
-        .close:hover {
-            color: #000;
-        }
 
-        /* Login buttons */
-        .login-btn {
-            width: 100%;
-            height: 48px;
-
-            background: #fff;
-            border: 1px solid #d5d5d5;
-            border-radius: 5px;
-
-            margin-bottom: 23px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
+        /* Input */
+        .input-container {
             position: relative;
-
-            font-size: 15px;
-            font-weight: 600;
-            color: #555;
-
-            cursor: pointer;
+            margin-top: 20px;
         }
 
-        .login-btn:hover {
-            background: #f8f8f8;
+        .input-container input {
+            width: 100%;
+            height: 60px;
+            border: 2px solid #2874f0;
+            border-radius: 4px;
+            outline: none;
+            padding: 20px 15px 5px 15px;
+            font-size: 16px;
         }
 
-        /* Icons */
-        .icon {
+        .input-label {
             position: absolute;
-            left: 20px;
-            font-size: 20px;
+            top: -7px;
+            left: 12px;
+            background: white;
+            padding: 0 5px;
+            font-size: 11px;
+            color: #2874f0;
         }
 
-        .google {
-            color: #4285F4;
-            font-weight: bold;
+        .country-code {
+            position: absolute;
+            left: 14px;
+            top: 24px;
+            font-size: 16px;
+            color: #333;
         }
 
-        .apple {
-            color: #000;
-            font-size: 22px;
+        .phone-input {
+            padding-left: 58px !important;
         }
 
+
+        /* Email */
         .email {
+            text-align: right;
+            margin-top: 25px;
+        }
+
+        .email a {
+            color: #2874f0;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+
+        /* Terms */
+        .terms {
+            margin-top: 30px;
             color: #777;
+            font-size: 13px;
+            line-height: 1.4;
         }
 
-        /* OR */
-        .or {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-
-            color: #777;
-            font-size: 14px;
-
-            margin: 5px 0 25px;
+        .terms a {
+            color: #2874f0;
+            text-decoration: none;
         }
 
-        .or::before,
-        .or::after {
-            content: "";
-            height: 1px;
-            background: #ddd;
-            flex: 1;
+
+        /* Button */
+        .continue-btn {
+            width: 100%;
+            height: 42px;
+            margin-top: 80px;
+            border: none;
+            border-radius: 2px;
+            background: #c9c9c9;
+            color: white;
+            font-size: 15px;
+            cursor: not-allowed;
         }
 
-        /* Mobile input */
+
+        /* Responsive */
+        @media (max-width: 750px) {
+
+            .login-box {
+                width: 95%;
+                height: auto;
+            }
+
+            .left-panel {
+                display: none;
+            }
+
+            .right-panel {
+                width: 100%;
+                padding: 40px;
+            }
+
+            .close {
+                right: 10px;
+                top: 10px;
+                color: #333;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background">
+
+        <div class="header">
+            <div class="logo">Flipkart</div>
+
+            <div class="search">
+                🔍 Search for Products, Brands and More
+            </div>
+
+            <div>🛒 Cart</div>
+        </div>
+
+        <div class="categories">
+
+            <div class="category">
+                <div class="category-icon">🛍️</div>
+                For You
+            </div>
+
+            <div class="category">
+                <div class="category-icon">👕</div>
+                Fashion
+            </div>
+
+            <div class="category">
+                <div class="category-icon">📱</div>
+                Mobiles
+            </div>
+
+            <div class="category">
+                <div class="category-icon">💻</div>
+                Electronics
+            </div>
+
+            <div class="category">
+                <div class="category-icon">🏠</div>
+                Furniture
+            </div>
+
+            <div class="category">
+                <div class="category-icon">📚</div>
+                Books
+            </div>
+
+        </div>
+
+        <div class="banner">
+            <div>
+                <h1>Men's Shoes</h1>
+                <p>Great offers available now!</p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Overlay -->
+    <div class="overlay">
+
+        <!-- Login Popup -->
+        <div class="login-box">
+
+            <!-- Left Panel -->
+            <div class="left-panel">
+
+                <h1>Login</h1>
+
+                <p>
+                    Get access to your<br>
+                    Orders, Wishlist and<br>
+                    Recommendations
+                </p>
+
+                <div class="illustration">
+
+                    <div class="sun"></div>
+                    <div class="cloud"></div>
+
+                    <div class="phone"></div>
+
+                    <div class="laptop"></div>
+                    <div class="laptop-base"></div>
+
+                    <div class="shopping-bag"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Right Panel -->
+            <div class="right-panel">
+
+                <div class="close">×</div>
+
+                <h2>Log in for the best experience</h2>
+
+                <div class="subtitle">
+                    Enter your phone number to continue
+                </div>
+
+
+                <div class="input-container">
+
+                    <span class="input-label">
+                        Phone Number
+                    </span>
+
+                    <span class="country-code">
+                        +91 ▾
+                    </span>
+
+                    <input
+                        type="tel"
+                        class="phone-input"
+                        id="phone"
+                        maxlength="10"
+                        oninput="checkPhone()"
+                    >
+
+                </div>
+
+
+                <div class="email">
+                    <a href="#">
+                        Use Email-ID
+                    </a>
+                </div>
+
+
+                <div class="terms">
+
+                    By continuing, you confirm that you are above
+                    18 years of age, and you agree to the Flipkart's
+
+                    <a href="#">
+                        Terms of Use
+                    </a>
+
+                    and
+
+                    <a href="#">
+                        Privacy Policy
+                    </a>
+
+                </div>
+
+
+                <button
+                    class="continue-btn"
+                    id="continueBtn"
+                    disabled
+                >
+                    Continue
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function checkPhone() {
+
+            const phone =
+                document.getElementById("phone").value;
+
+            const button =
+                document.getElementById("continueBtn");
+
+            if (phone.length === 10) {
+
+                button.disabled = false;
+                button.style.background = "#fb641b";
+                button.style.cursor = "pointer";
+
+            } else {
+
+                button.disabled = true;
+                button.style.background = "#c9c9c9";
+                button.style.cursor = "not-allowed";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>/* Mobile input */
         .mobile-input {
             display: flex;
             align-items: center;
