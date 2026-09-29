@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: #f5f5f5;
+        }
+
+        /* Dark background overlay */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Login Popup */
+        .login-box {
+            width: 450px;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 22px 50px 25px;
+            position: relative;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Heading */
+        .login-box h2 {
+            text-align: center;
+            font-size: 18px;
+            color: #222;
+            margin-bottom: 35px;
+        }
+
+        /* Close button */
+        .close {
+            position: absolute;
+            right: 18px;
+            top: 16px;
+
+            font-size: 30px;
+            font-weight: 300;
+            color: #555;
+
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        /* Login buttons */
+        .login-btn {
+            width: 100%;
+            height: 48px;
+
+            background: #fff;
+            border: 1px solid #d5d5d5;
+            border-radius: 5px;
+
+            margin-bottom: 23px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            font-size: 15px;
+            font-weight: 600;
+            color: #555;
+
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background: #f8f8f8;
+        }
+
+        /* Icons */
+        .icon {
+            position: absolute;
+            left: 20px;
+            font-size: 20px;
+        }
+
+        .google {
+            color: #4285F4;
+            font-weight: bold;
+        }
+
+        .apple {
+            color: #000;
+            font-size: 22px;
+        }
+
+        .email {
+            color: #777;
+        }
+
+        /* OR */
+        .or {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            color: #777;
+            font-size: 14px;
+
+            margin: 5px 0 25px;
+        }
+
+        .or::before,
+        .or::after {
+            content: "";
+            height: 1px;
+            background: #ddd;
+            flex: 1;
+        }
+
+        /* Mobile input */
+        .mobile-input {
+            display: flex;
+            align-items: center;
+
+            height: 48px;
+
+            border-bottom: 1px solid #ccc;
+
+            margin-bottom: 125px;
+        }
+
+        .country {
+            display: flex;
+            align-items: center;
+
+            font-size: 15px;
+            color: #555;
+
+            padding-right: 10px;
+        }
+
+        .flag {
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+        .arrow {
+            margin-left: 7px;
+            font-size: 12px;
+        }
+
+        .mobile-input input {
+            flex: 1;
+
+            border: none;
+            outline: none;
+
+            font-size: 15px;
+            padding: 10px;
+        }
+
+        .mobile-input input::placeholder {
+            color: #777;
+        }
+
+        /* Terms */
+        .terms {
+            text-align: center;
+
+            color: #999;
+
+            font-size: 12px;
+            line-height: 18px;
+        }
+
+        .terms a {
+            color: #777;
+            text-decoration: underline;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 500px) {
+
+            .login-box {
+                width: 90%;
+                padding: 22px 25px 25px;
+            }
+
+            .mobile-input {
+                margin-bottom: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="overlay">
+
+        <div class="login-box">
+
+            <!-- Close -->
+            <div class="close">&times;</div>
+
+            <!-- Heading -->
+            <h2>Get Started</h2>
+
+            <!-- Google -->
+            <button class="login-btn">
+                <span class="icon google">G</span>
+                Continue with Google
+            </button>
+
+            <!-- Email -->
+            <button class="login-btn">
+                <span class="icon email">✉</span>
+                Continue with Email
+            </button>
+
+            <!-- Apple -->
+            <button class="login-btn">
+                <span class="icon apple">●</span>
+                Continue with Apple
+            </button>
+
+            <!-- OR -->
+            <div class="or">
+                OR
+            </div>
+
+            <!-- Mobile -->
+            <div class="mobile-input">
+
+                <div class="country">
+                    <span class="flag">🇮🇳</span>
+                    +91
+                    <span class="arrow">▼</span>
+                </div>
+
+                <input
+                    type="tel"
+                    placeholder="Continue with mobile number"
+                    maxlength="10"
+                >
+
+            </div>
+
+            <!-- Terms -->
+            <div class="terms">
+
+                By continuing, you agree to our<br>
+
+                <a href="#">Terms & Conditions</a>
+                and
+                <a href="#">Privacy Policy</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
